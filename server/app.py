@@ -35,7 +35,6 @@ PIZZAS = [
 ]
 
 app = Flask(__name__)
-count = 0
 
 
 def get_data_v1():
@@ -65,15 +64,13 @@ def get_data_v2():
 
 @app.route('/')
 def index():
-    global count
-    count = (count + 1) % 5
-    if ERROR_MODE or count == 0:
+    if ERROR_MODE and random.randint(0, 4) == 0:
         return 'An internal error has occured.', 500
     get_data_funcs = {
         'v1': get_data_v1,
         'v2': get_data_v2,
     }
-    version = request.headers.get('FAVORITE-API-VERSION', 'v1')
+    version = request.headers.get('FAVORITE-API-VERSION', request.args.get('version', 'v1'))
     get_data = get_data_funcs.get(version)
     return jsonify(get_data())
 

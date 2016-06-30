@@ -41,13 +41,14 @@ def format_color_counts(counts):
     ])
 
 
-def get_raw_people_data():
+def get_raw_people_data(version='v1'):
     """Fetches the raw data.
 
+    :param str version: Version of the API to use
     :return str: Raw API response
     """
     headers = {
-        'FAVORITE-API-VERSION': 'v1',
+        'FAVORITE-API-VERSION': version,
     }
     return requests.get(SERVER_URL, headers=headers).text
 
@@ -91,7 +92,8 @@ def summarize_favorite_colors(people):
 
 
 def main():
-    raw_data = get_raw_people_data()
+    """Summarizes the favorite from a raw API of people data."""
+    raw_data = get_raw_people_data(version='v2')
     people = parse_people(raw_data)
     print(summarize_favorite_colors(people))
 

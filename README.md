@@ -1,7 +1,9 @@
 why
+
 pytest
 mock
 vcr
+pytest-cov
 
 
 going to be covering a lot of topics
