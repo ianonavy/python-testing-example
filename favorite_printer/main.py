@@ -10,7 +10,7 @@ from collections import Counter
 import requests
 
 
-SERVER_URL = 'http://localhost:5000/'
+SERVER_URL = 'http://127.0.0.1:5000/'
 COLOR_COUNT_TEMPLATE = """- {color}: {count}"""
 SUMMARY_TEMPLATE = """People's favorite colors:
 
@@ -74,7 +74,12 @@ def parse_people(raw_data):
     :raises ValueError: raw_data is not valid JSON
     :raises KeyError: raw data
     """
-    return json.loads(raw_data)['persons']
+    parsed_data = json.loads(raw_data)
+    valid_keys = {'people', 'persons'}
+    for key in valid_keys:
+        if key in parsed_data:
+            return parsed_data[key]
+    raise ValueError("No expected key found")
 
 
 def summarize_favorite_colors(people):
@@ -95,7 +100,7 @@ def summarize_favorite_colors(people):
 
 def main():
     """Summarizes the favorite from a raw API of people data."""
-    raw_data = get_raw_people_data()
+    raw_data = get_raw_people_data(version='v2')
     people = parse_people(raw_data)
     print(summarize_favorite_colors(people))
 

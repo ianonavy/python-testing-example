@@ -1,0 +1,25 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      FAVORITE-API-VERSION: [v1]
+      User-Agent: [python-requests/2.10.0]
+    method: GET
+    uri: http://127.0.0.1:5000/
+  response:
+    body: {string: !!python/unicode "{\n  \"persons\": [\n    {\n      \"favoriteColor\":
+        \"Orange\", \n      \"name\": \"Alice\"\n    }, \n    {\n      \"favoriteColor\":
+        \"Blue\", \n      \"name\": \"Bob\"\n    }, \n    {\n      \"favoriteColor\":
+        \"Green\", \n      \"name\": \"Charlie\"\n    }, \n    {\n      \"favoriteColor\":
+        \"Red\", \n      \"name\": \"Dean\"\n    }, \n    {\n      \"favoriteColor\":
+        \"Green\", \n      \"name\": \"Eve\"\n    }\n  ]\n}\n"}
+    headers:
+      content-length: ['361']
+      content-type: [application/json]
+      date: ['Thu, 30 Jun 2016 16:52:54 GMT']
+      server: [Werkzeug/0.11.10 Python/2.7.11]
+    status: {code: 200, message: OK}
+version: 1
