@@ -1,18 +1,9 @@
-why
+Python Testing Tutorial Starter Code
+====================================
 
-pytest
-mock
-vcr
-pytest-cov
+Made for EverQuote Lunch-N-Learn on 2016-06-30
 
+Requirements
+------------
 
-going to be covering a lot of topics
-- will be going lightning fast
-
-why we're testing
-- here's a thing
-- oh god production broke
-- if only we had tested this edge case
-
-
-
+    pip install pytest mock vcrpy pytest-cov
