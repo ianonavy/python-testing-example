@@ -71,6 +71,8 @@ def parse_people(raw_data):
 
     :param str raw_data: The serialized raw response from the API
     :return list: List of deserialized dicts of people
+    :raises ValueError: raw_data is not valid JSON
+    :raises KeyError: raw data
     """
     return json.loads(raw_data)['persons']
 
@@ -93,7 +95,7 @@ def summarize_favorite_colors(people):
 
 def main():
     """Summarizes the favorite from a raw API of people data."""
-    raw_data = get_raw_people_data(version='v2')
+    raw_data = get_raw_people_data()
     people = parse_people(raw_data)
     print(summarize_favorite_colors(people))
 
